@@ -11,13 +11,13 @@ public class Robot extends IterativeRobot {
 	
 	Joystick driverStick = new Joystick(0);
 	
-	Spark LeftDrive = new Spark(0);             //done
-	Spark RightDrive = new Spark(1);            //done
-	Spark MainArm1 = new Spark(3);              //NOT done Hesitating?
-	Spark ScrewArm2 = new Spark(7);             //done
-	Spark RedlineArm4 = new Spark(6);           //done
-	Spark RightGrabberArm5 = new Spark(2);      //done
-	Spark LeftGrabberArm7 = new Spark(4);       //done
+	Spark LeftDrive = new Spark(0);             //working
+	Spark RightDrive = new Spark(1);            //working
+	Spark MainArm1 = new Spark(3);              //NOT tested probably Hesitating?
+	Spark ScrewArm2 = new Spark(7);             //working
+	Spark RedlineArm4 = new Spark(6);           //working
+	Spark RightGrabberArm5 = new Spark(2);      //hesitating
+	Spark LeftGrabberArm7 = new Spark(4);       //hesitating
 	//Spark Arm8 = new Spark(7);
 	//Spark Arm9 = new Spark(8);
 	
