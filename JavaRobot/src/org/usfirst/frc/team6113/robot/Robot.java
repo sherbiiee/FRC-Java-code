@@ -4,6 +4,7 @@ package org.usfirst.frc.team6113.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -11,15 +12,15 @@ public class Robot extends IterativeRobot {
 	
 	Joystick driverStick = new Joystick(0);
 	
-	Spark LeftDrive = new Spark(0);             //working
-	Spark RightDrive = new Spark(1);            //working
-	Spark MainArm1 = new Spark(3);              //NOT tested probably Hesitating?
-	Spark ScrewArm2 = new Spark(7);             //working
-	Spark RedlineArm4 = new Spark(6);           //working
-	Spark RightGrabberArm5 = new Spark(2);      //hesitating
-	Spark LeftGrabberArm7 = new Spark(4);       //hesitating
-	//Spark Arm8 = new Spark(7);
-	//Spark Arm9 = new Spark(8);
+	Spark LeftDrive = new Spark(0);             
+	Victor RightDrive = new Victor(1);            
+	Victor MainArm1 = new Victor(3);              
+	Victor ScrewArm2 = new Victor(7);             
+	Victor RedlineArm4 = new Victor(6);          
+	Victor RightGrabberArm5 = new Victor(2);      
+	Victor LeftGrabberArm7 = new Victor(4);      
+	//Victor Arm8 = new Victor(7);
+	//Victor Arm9 = new Victor(8);
 	
 	private Timer m_timer = new Timer();
 	
@@ -64,8 +65,8 @@ public class Robot extends IterativeRobot {
 		
 		LeftDrive.set(leftStickValue);
 		RightDrive.set(-RightStickValue);
-		MainArm1.set(LeftTrigger);
-		MainArm1.set(-RightTrigger);
+		MainArm1.set(-LeftTrigger);
+		MainArm1.set(RightTrigger);
 		
 		if (driverStick.getRawButton(5))
 		{
@@ -81,6 +82,11 @@ public class Robot extends IterativeRobot {
 			System.out.println("Reverse button 6 pressed");
 		}
 		
+		else {
+			RightGrabberArm5.set(0);
+			LeftGrabberArm7.set(0);			
+		}
+		
 		if (driverStick.getRawButton(4))
 		{
 			ScrewArm2.set(1);
@@ -94,18 +100,11 @@ public class Robot extends IterativeRobot {
 
 			System.out.println("Reverse button 1 pressed");
 		}
-		
+	
 		else {
-			RightGrabberArm5.set(0);
-			LeftGrabberArm7.set(0);
-			ScrewArm2.set(0);
-		}
-		
-	
+ 		    ScrewArm2.set(0);
+		}	
 	}
-
-
-	
 
 	/**
 	 * This function is called periodically during test mode.
