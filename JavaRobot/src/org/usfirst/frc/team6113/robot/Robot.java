@@ -13,10 +13,10 @@ public class Robot extends IterativeRobot {
 	Joystick driverStick = new Joystick(0);
 	
 	Spark LeftDrive = new Spark(0);             
-	Victor RightDrive = new Victor(1);            
+	Victor RightDrive = new Victor(1); 
 	Victor MainArm1 = new Victor(3);              
-	Victor ScrewArm2 = new Victor(7);             
-	Victor RedlineArm4 = new Victor(6);          
+	Victor ScrewArm2 = new Victor(7);
+	Victor RedlineArm4 = new Victor(6);  
 	Victor RightGrabberArm5 = new Victor(2);      
 	Victor LeftGrabberArm7 = new Victor(4);      
 	//Victor Arm8 = new Victor(7);
@@ -65,8 +65,26 @@ public class Robot extends IterativeRobot {
 		
 		LeftDrive.set(leftStickValue);
 		RightDrive.set(-RightStickValue);
-		MainArm1.set(-LeftTrigger);
-		MainArm1.set(RightTrigger);
+		RedlineArm4.set(-RightTrigger);
+		RedlineArm4.set(LeftTrigger);
+		
+		if (driverStick.getRawButton(2))
+		{
+			MainArm1.set(0.5);
+
+			System.out.println("button 2 pressed");
+			
+		}
+		else if (driverStick.getRawButton(3))
+		{
+			MainArm1.set(-0.5);
+
+			System.out.println("Reverse button 3 pressed");
+		}
+		
+		else {
+			MainArm1.set(0);
+		}
 		
 		if (driverStick.getRawButton(5))
 		{
